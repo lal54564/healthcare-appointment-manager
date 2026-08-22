@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   HEALTHCARE PREMIUM MODERN DESIGN SYSTEM
+   Primary Background: Parchment/Cream (#f4f1ea)
+   Primary Text: Deep Espresso Brown (#3b2f2f)
+   Accent/Borders: Brushed Gold/Bronze (#b59a5c)
+   Headlines Font: Outfit (font-classic / font-display)
+   Body Font: Inter (font-vintage / font-sans)
+   ============================================ */
+
+@layer base {
+  :root {
+    --color-parchment: #f4f1ea;
+    --color-espresso: #3b2f2f;
+    --color-gold: #b59a5c;
+    --color-gold-light: #f7f5ef;
+    --color-gold-border: #d2c19d;
+    --color-cream-card: #faf8f3;
+    
+    --radius-classic: 4px;
+    --border-classic: 1px solid var(--color-gold-border);
+    --border-double-classic: 3px double var(--color-gold-border);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply text-[#3b2f2f] bg-[#f4f1ea] antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    @apply font-bold tracking-tight text-[#3b2f2f];
+  }
+}
+
+
+@layer components {
+  /* ---- Elegant Framed Cards ---- */
+  .hc-card {
+    @apply bg-[#faf8f3] rounded-md transition-all duration-200;
+    border: var(--border-classic);
+    box-shadow: 0 4px 10px rgba(59, 47, 47, 0.04);
+    position: relative;
+  }
+  .hc-card::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(181, 154, 92, 0.15);
+    pointer-events: none;
+    border-radius: 2px;
+  }
+  .hc-card:hover {
+    box-shadow: 0 6px 15px rgba(59, 47, 47, 0.08);
+    border-color: #b59a5c;
+  }
+
+  /* ---- Sophisticated Vintage Buttons ---- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#b59a5c] hover:bg-[#9d8349] active:bg-[#856e3c] text-white font-medium rounded transition-all duration-150 focus:outline-none focus:ring-1 focus:ring-[#b59a5c] shadow-sm border border-[#a2874a] font-classic tracking-wide text-xs uppercase;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#faf8f3] hover:bg-[#f3ebd9] active:bg-[#e7d8b5] text-[#3b2f2f] font-medium rounded border border-[#b59a5c] transition-all duration-150 focus:outline-none focus:ring-1 focus:ring-[#b59a5c] font-classic tracking-wide text-xs uppercase;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#8c2a2a] hover:bg-[#722121] active:bg-[#581818] text-white font-medium rounded transition-all duration-150 focus:outline-none focus:ring-1 focus:ring-[#8c2a2a] shadow-sm border border-[#722121] font-classic tracking-wide text-xs uppercase;
+  }
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2 bg-[#2d5a27] hover:bg-[#20421c] text-white font-medium rounded transition-all duration-150 focus:outline-none focus:ring-1 focus:ring-[#2d5a27] shadow-sm border border-[#20421c] font-classic tracking-wide text-xs uppercase;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-[#3b2f2f] hover:bg-[#f3ebd9] font-medium rounded transition-all duration-150 focus:outline-none font-classic text-xs uppercase;
+  }
+
+  /* ---- Classic Status Badges ---- */
+  .badge {
+    @apply inline-flex items-center px-3 py-0.5 rounded-sm text-xs font-semibold uppercase tracking-wider border font-classic;
+  }
+  .badge-confirmed {
+    @apply bg-[#eef7ff] text-[#1459e1] border-[#bce0ff];
+  }
+  .badge-completed {
+    @apply bg-[#e8f5e9] text-[#2e7d32] border-[#c8e6c9];
+  }
+  .badge-cancelled {
+    @apply bg-[#ffebee] text-[#c62828] border-[#ffcdd2];
+  }
+  .badge-upcoming, .badge-held, .badge-rescheduled {
+    @apply bg-[#fff8e1] text-[#b78103] border-[#ffe082];
+  }
+  .badge-pending {
+    @apply bg-[#f3e5f5] text-[#6a1b9a] border-[#e1bee7];
+  }
+
+  /* ---- Framed Metric Cards ---- */
+  .stat-card {
+    @apply hc-card p-5 flex items-start gap-4;
+    border: var(--border-double-classic);
+  }
+  .stat-card-icon {
+    @apply w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0 border border-[#b59a5c]/30 bg-[#faf7f0];
+  }
+
+  /* ---- Vintage Welcome Banner ---- */
+  .welcome-banner {
+    @apply rounded-md p-6 text-[#3b2f2f] relative overflow-hidden;
+    background-color: #faf7f0;
+    border: var(--border-double-classic);
+  }
+  .welcome-banner-doctor {
+    background-color: #f5f2e8;
+    border: var(--border-double-classic);
+  }
+
+  /* ---- Classic Form Controls ---- */
+  .hc-input {
+    @apply w-full px-4 py-2.5 text-sm text-[#3b2f2f] bg-[#faf8f3] border border-[#d2c19d] rounded-sm placeholder-[#3b2f2f]/40 focus:outline-none focus:ring-1 focus:ring-[#b59a5c] focus:border-[#b59a5c] transition-all duration-150 font-vintage;
+  }
+  .hc-label {
+    @apply block text-sm font-semibold text-[#3b2f2f] mb-1.5 font-classic tracking-wide text-xs uppercase;
+  }
+
+  /* ---- Sidebar Nav Items ---- */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm font-medium text-[#3b2f2f] hover:bg-[#e7d8b5] transition-all duration-150 cursor-pointer font-classic uppercase tracking-wider text-xs;
+  }
+  .nav-item-active {
+    @apply bg-[#e7d8b5] text-[#3b2f2f] font-bold border-l-4 border-[#b59a5c];
+  }
+  .nav-item-active-doctor {
+    @apply bg-[#e7d8b5] text-[#3b2f2f] font-bold border-l-4 border-[#b59a5c];
+  }
+
+  /* ---- Page Headers ---- */
+  .page-header {
+    @apply flex items-center justify-between mb-6 pb-2 border-b border-[#d2c19d];
+  }
+  .page-title {
+    @apply text-3xl font-bold text-[#3b2f2f] font-classic;
+  }
+  .page-subtitle {
+    @apply text-sm text-[#3b2f2f]/70 mt-0.5 font-vintage italic;
+  }
+
+  /* ---- Fine-bordered Table ---- */
+  .hc-table {
+    @apply w-full text-sm font-vintage;
+  }
+  .hc-table injustices {
+    border-collapse: collapse;
+  }
+  .hc-table thead tr {
+    @apply border-b-2 border-[#d2c19d];
+  }
+  .hc-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-[#3b2f2f] uppercase tracking-wider font-classic;
+  }
+  .hc-table tbody tr {
+    @apply border-b border-[#e7d8b5]/50 hover:bg-[#faf7f0] transition-colors duration-100;
+  }
+  .hc-table td {
+    @apply px-4 py-3.5 text-[#3b2f2f];
+  }
+
+  /* ---- Premium Initials ---- */
+  .avatar-initials {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-[#faf8f3] flex-shrink-0 font-classic border border-[#b59a5c];
+    background-color: #3b2f2f;
+  }
+  .avatar-initials-sm {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-[#faf8f3] flex-shrink-0 font-classic border border-[#b59a5c];
+    background-color: #3b2f2f;
+  }
+  .avatar-initials-doctor {
+    background-color: #5c492a;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[#faf8f3]/90 border border-[#d2c19d] shadow-sm;
+  }
+  .glass-dark {
+    @apply bg-[#3b2f2f]/90 border border-[#b59a5c]/50 shadow-md;
+  }
+  .text-gradient-primary {
+    @apply text-[#b59a5c];
+  }
+  .bg-gradient-primary {
+    background-color: #3b2f2f;
+  }
+  .bg-gradient-auth {
+    @apply bg-[#f4f1ea];
+  }
+  .font-display {
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  .font-classic {
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  .font-vintage {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* ---- Vintage Scrollbar ---- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f4f1ea; }
+::-webkit-scrollbar-thumb {
+  background: #d2c19d;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover { background: #b59a5c; }
+
+/* ---- Fine Line Skeleton Shimmer ---- */
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+.animate-shimmer {
+  animation: shimmer 2s infinite ease-in-out;
+  background-color: #e7d8b5/30;
+}
+
+/* ---- Elegant transition animations ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out forwards;
+}
