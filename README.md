@@ -1,5 +1,11 @@
 # Healthcare Appointment & Follow-up Manager
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://healthcare-appointment-manager-git-3fcb5f-ganeshs-projects-cf657261.vercel.app)
+[![Supabase](https://img.shields.io/badge/Supabase-Database%20%26%20Auth-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+🔗 **Live Production Deployment**: [https://healthcare-appointment-manager.vercel.app](https://healthcare-appointment-manager-git-3fcb5f-ganeshs-projects-cf657261.vercel.app)
+
 A comprehensive, production-ready healthcare appointment management platform with AI-powered pre-visit/post-visit clinical summaries, automated email notifications, Google Calendar two-way synchronization, and background medication reminder queues.
 
 ---
