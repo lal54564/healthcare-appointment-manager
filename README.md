@@ -8,6 +8,7 @@
 
 A comprehensive, production-ready healthcare appointment management platform with AI-powered pre-visit/post-visit clinical summaries, automated email notifications, Google Calendar two-way synchronization, and background medication reminder queues.
 
+
 ---
 
 ## 🌟 Project Overview
