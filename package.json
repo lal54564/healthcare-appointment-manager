@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node -e \"require('fs').copyFileSync('dist/client/_shell.html', 'dist/client/index.html')\"",
+    "build": "vite build && node build-vercel.js",
     "start": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
