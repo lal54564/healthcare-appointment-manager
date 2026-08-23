@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../../lib/db/client'
-import { formatToClinicTime } from '../../../lib/timezone'
+import { formatToClinicTime, formatToClinicTimeOnly } from '../../../lib/timezone'
 import { toast } from 'react-hot-toast'
 import { Calendar, Clock, MapPin, X, RefreshCcw, CheckCircle, FileText, AlertTriangle } from 'lucide-react'
 
@@ -343,7 +343,7 @@ function AppointmentsPage() {
                             : 'bg-[#faf8f3] text-[#3b2f2f] border-[#d2c19d] hover:border-[#b59a5c]'
                         }`}
                       >
-                        {new Date(slot.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        {formatToClinicTimeOnly(slot.start_time)}
                       </button>
                     ))}
                   </div>

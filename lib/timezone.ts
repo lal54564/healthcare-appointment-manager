@@ -17,8 +17,11 @@ export const CLINIC_TIMEZONE = (rawTz || 'Asia/Kolkata').replace(/^["']|["']$/g,
 /**
  * Format a UTC date to the clinic's local timezone for display
  */
-export function formatToClinicTime(date: Date | string, options?: Intl.DateTimeFormatOptions): string {
+export function formatToClinicTime(date: Date | string | undefined | null, options?: Intl.DateTimeFormatOptions): string {
+  if (!date) return '';
   const d = typeof date === 'string' ? new Date(date) : date;
+  if (isNaN(d.getTime())) return '';
+  
   const defaultOptions: Intl.DateTimeFormatOptions = {
     timeZone: CLINIC_TIMEZONE,
     year: 'numeric',
@@ -34,8 +37,11 @@ export function formatToClinicTime(date: Date | string, options?: Intl.DateTimeF
 /**
  * Format a UTC date to clinic date only (no time)
  */
-export function formatToClinicDate(date: Date | string): string {
+export function formatToClinicDate(date: Date | string | undefined | null): string {
+  if (!date) return '';
   const d = typeof date === 'string' ? new Date(date) : date;
+  if (isNaN(d.getTime())) return '';
+  
   return d.toLocaleDateString('en-IN', {
     timeZone: CLINIC_TIMEZONE,
     year: 'numeric',
@@ -47,8 +53,11 @@ export function formatToClinicDate(date: Date | string): string {
 /**
  * Format a UTC date to clinic time only (no date)
  */
-export function formatToClinicTimeOnly(date: Date | string): string {
+export function formatToClinicTimeOnly(date: Date | string | undefined | null): string {
+  if (!date) return '';
   const d = typeof date === 'string' ? new Date(date) : date;
+  if (isNaN(d.getTime())) return '';
+  
   return d.toLocaleTimeString('en-IN', {
     timeZone: CLINIC_TIMEZONE,
     hour: '2-digit',
