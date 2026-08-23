@@ -266,10 +266,10 @@ function BookAppointmentPage() {
     try {
       setAiPending(true);
       const summary = await generatePreVisitSummary({
-        mainSymptoms: symptoms.main_symptoms,
+        main_symptoms: symptoms.main_symptoms,
         duration: symptoms.duration,
         severity: symptoms.severity,
-        additionalInfo: symptoms.additional_info,
+        additional_info: symptoms.additional_info,
       });
 
       const { error: sumError } = await supabase
@@ -277,19 +277,21 @@ function BookAppointmentPage() {
         .insert({
           appointment_id: appointmentId,
           summary_type: 'pre_visit',
-          content: summary.summaryText,
+          content: summary.chief_complaint,
           urgency: summary.urgency.toLowerCase(),
-          chief_complaint: symptoms.main_symptoms.substring(0, 100),
-          suggested_questions: summary.suggestedQuestions,
+          chief_complaint: summary.chief_complaint.substring(0, 100),
+          suggested_questions: summary.suggested_questions,
           status: 'completed',
         });
 
-      if (sumError) throw sumError;
+      if (sumError) {
+        console.warn('Could not save summary to DB:', sumError);
+      }
 
       setAiSummary({
         urgency: summary.urgency,
-        chief_complaint: symptoms.main_symptoms,
-        suggested_questions: summary.suggestedQuestions,
+        chief_complaint: summary.chief_complaint,
+        suggested_questions: summary.suggested_questions,
       });
 
     } catch (err: any) {
