@@ -38,3 +38,7 @@ coverage/
 
 # Supabase
 supabase/.temp/
+
+# Archives
+*.zip
+
