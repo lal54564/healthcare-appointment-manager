@@ -7,10 +7,12 @@
  */
 
 // Clinic timezone - configurable via environment variable
-export const CLINIC_TIMEZONE = 
-  typeof import.meta !== 'undefined' && import.meta.env?.VITE_CLINIC_TIMEZONE
+const rawTz = typeof import.meta !== 'undefined' && import.meta.env?.VITE_CLINIC_TIMEZONE
     ? import.meta.env.VITE_CLINIC_TIMEZONE
     : 'Asia/Kolkata';
+
+// Strip quotes and whitespace in case of accidental bad formatting in Vercel env vars
+export const CLINIC_TIMEZONE = (rawTz || 'Asia/Kolkata').replace(/^["']|["']$/g, '').trim();
 
 /**
  * Format a UTC date to the clinic's local timezone for display
