@@ -104,7 +104,7 @@ CREATE POLICY "profiles_admin"        ON public.profiles FOR ALL USING (EXISTS (
 -- USER ROLES
 CREATE POLICY "user_roles_select_own" ON public.user_roles FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "user_roles_insert_own" ON public.user_roles FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "user_roles_admin"      ON public.user_roles FOR ALL USING (EXISTS (SELECT 1 FROM public.user_roles ur WHERE ur.user_id = auth.uid() AND ur.role = 'admin'));
+CREATE POLICY "user_roles_admin"      ON public.user_roles FOR ALL USING (public.has_role(auth.uid(), 'admin'));
 
 -- DOCTORS
 CREATE POLICY "doctors_select_all"    ON public.doctors FOR SELECT USING (auth.role() = 'authenticated');
