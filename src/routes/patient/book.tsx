@@ -162,7 +162,16 @@ function BookAppointmentPage() {
       });
 
       if (error) throw error;
-      setSlots(data || []);
+      
+      // Adapt backend slot fields (slot_start, slot_end) to frontend expected fields (start_time, end_time)
+      const adaptedSlots = (data || []).map((s: any) => ({
+        start_time: s.slot_start || s.start_time,
+        end_time: s.slot_end || s.end_time,
+        is_available: s.is_available,
+        is_held: s.is_held
+      }));
+      
+      setSlots(adaptedSlots);
     } catch (err: any) {
       toast.error(err.message || 'Failed to fetch slots');
     } finally {
