@@ -11,8 +11,13 @@ if (isDevMockMode) {
   );
 }
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key';
+let rawUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder-project.supabase.co';
+// Strip quotes if the user accidentally added them in Vercel env vars
+rawUrl = rawUrl.replace(/^["']|["']$/g, '').trim();
+const supabaseUrl = rawUrl.startsWith('http') ? rawUrl : 'https://placeholder-project.supabase.co';
+
+let rawKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-anon-key';
+const supabaseAnonKey = rawKey.replace(/^["']|["']$/g, '').trim();
 
 // Real client definition (if ever needed or to compile types)
 const realSupabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
