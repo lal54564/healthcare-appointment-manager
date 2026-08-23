@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../../lib/db/client'
-import { formatToClinicTime } from '../../../lib/timezone'
+import { formatToClinicTime, formatToClinicDate } from '../../../lib/timezone'
 import { toast } from 'react-hot-toast'
 import { FileText, Calendar, User, Activity, AlertCircle, Loader2 } from 'lucide-react'
 
@@ -92,7 +92,7 @@ function SummariesPage() {
                     </div>
                     <p className="text-sm text-[#3b2f2f]/60 flex items-center gap-2 mt-0.5">
                       <Calendar className="w-3.5 h-3.5 text-[#b59a5c]" />
-                      {new Date(summary.appointments?.start_time).toLocaleDateString()}
+                      {formatToClinicDate(summary.appointments?.start_time) || 'Unknown Date'}
                       <span className="mx-1 text-[#b59a5c]">•</span>
                       <User className="w-3.5 h-3.5 text-[#b59a5c]" />
                       Dr. {summary.appointments?.doctors?.profiles?.last_name}

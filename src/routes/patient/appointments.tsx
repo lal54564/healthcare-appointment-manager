@@ -52,7 +52,13 @@ function AppointmentsPage() {
         p_date: dateStr,
       })
       if (error) throw error
-      setRescheduleSlots(data || [])
+      const adapted = (data || []).map((s: any) => ({
+        start_time: s.slot_start || s.start_time,
+        end_time: s.slot_end || s.end_time,
+        is_available: s.is_available,
+        is_held: s.is_held
+      }))
+      setRescheduleSlots(adapted)
     } catch (err: any) {
       console.warn('Slot load note:', err)
       setRescheduleSlots([])

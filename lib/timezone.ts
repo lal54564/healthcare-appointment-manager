@@ -109,8 +109,10 @@ export function clinicTimeToUTC(dateStr: string, timeStr: string): Date {
 /**
  * Get day of week (1=Monday, 7=Sunday) for a date in clinic timezone
  */
-export function getClinicDayOfWeek(date: Date | string): number {
+export function getClinicDayOfWeek(date: Date | string | undefined | null): number {
+  if (!date) return 0;
   const d = typeof date === 'string' ? new Date(date) : date;
+  if (isNaN(d.getTime())) return 0;
   const dayStr = d.toLocaleDateString('en-US', {
     timeZone: CLINIC_TIMEZONE,
     weekday: 'short',
@@ -124,8 +126,10 @@ export function getClinicDayOfWeek(date: Date | string): number {
 /**
  * Format relative time (e.g., "in 2 hours", "3 days ago")
  */
-export function formatRelativeTime(date: Date | string): string {
+export function formatRelativeTime(date: Date | string | undefined | null): string {
+  if (!date) return '';
   const d = typeof date === 'string' ? new Date(date) : date;
+  if (isNaN(d.getTime())) return '';
   const now = new Date();
   const diffMs = d.getTime() - now.getTime();
   const diffMins = Math.round(diffMs / 60000);

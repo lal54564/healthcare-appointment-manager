@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { supabase } from '../../../lib/db/client'
+import { formatToClinicDate } from '../../../lib/timezone'
 import toast from 'react-hot-toast'
 import { 
   Plus, 
@@ -570,7 +571,7 @@ function AdminDoctorsPage() {
                     <li key={leave.id} className="p-3 flex justify-between items-center text-sm">
                       <div>
                         <span className="font-medium text-gray-900">
-                          {new Date(leave.date).toLocaleDateString()}
+                          {formatToClinicDate(leave.date)}
                         </span>
                         <span className="text-gray-500 ml-2">{leave.reason}</span>
                       </div>

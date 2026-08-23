@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../../lib/db/client'
-import { formatToClinicTime } from '../../../lib/timezone'
+import { formatToClinicTime, formatToClinicDate } from '../../../lib/timezone'
 import { toast } from 'react-hot-toast'
 import { Pill, Calendar, Clock, Info } from 'lucide-react'
 
@@ -41,7 +41,7 @@ function PrescriptionsPage() {
 
   // Group by appointment date
   const groupedPrescriptions = prescriptions.reduce((acc: any, curr: any) => {
-    const date = new Date(curr.appointments?.start_time).toLocaleDateString()
+    const date = formatToClinicDate(curr.appointments?.start_time) || 'Prescribed Date'
     if (!acc[date]) {
       acc[date] = []
     }

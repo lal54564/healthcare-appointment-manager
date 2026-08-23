@@ -1,0 +1,1 @@
+import{j as t,O as o}from"./index-VTWEOHt5.js";import{A as r}from"./AppLayout-DqkAN4oD.js";import"./x-DOGTsYkG.js";import"./bell-BAbcL29a.js";import"./chevron-down-sFEBEY4n.js";import"./users-BvS8s0Pa.js";import"./pill-BwfS_gUl.js";import"./file-text-Bz4fbfDi.js";function x(){return t.jsx(r,{children:t.jsx(o,{})})}export{x as component};

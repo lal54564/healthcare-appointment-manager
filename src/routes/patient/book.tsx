@@ -213,11 +213,19 @@ function BookAppointmentPage() {
       if (!holdAppointment) {
         throw new Error('Failed to hold appointment slot. Try again.');
       }
+      if (holdAppointment.success === false) {
+        throw new Error(holdAppointment.error_message || 'Slot is no longer available');
+      }
+
+      const appointmentId = holdAppointment.appointment_id || holdAppointment.id;
+      if (!appointmentId) {
+        throw new Error('Failed to acquire slot reservation.');
+      }
 
       const { error: formError } = await supabase
         .from('symptom_forms')
         .insert({
-          appointment_id: holdAppointment.id,
+          appointment_id: appointmentId,
           main_symptoms: symptoms.main_symptoms,
           duration: symptoms.duration,
           severity: symptoms.severity,
@@ -226,21 +234,26 @@ function BookAppointmentPage() {
 
       if (formError) throw formError;
 
-      const { error: confirmError } = await supabase.rpc('confirm_appointment', {
-        p_appointment_id: holdAppointment.id,
+      const { data: confirmData, error: confirmError } = await supabase.rpc('confirm_appointment', {
+        p_appointment_id: appointmentId,
+        p_patient_id: user.id,
       });
 
       if (confirmError) throw confirmError;
+      const confirmResult = confirmData && confirmData[0];
+      if (confirmResult && confirmResult.success === false) {
+        throw new Error(confirmResult.error_message || 'Could not confirm appointment.');
+      }
 
       setAppointmentDetails({
-        id: holdAppointment.id,
+        id: appointmentId,
         doctor: selectedDoctor,
         slot: selectedSlot,
         symptoms: symptoms,
       });
 
       setStep(5);
-      triggerAiSummary(holdAppointment.id);
+      triggerAiSummary(appointmentId);
 
     } catch (err: any) {
       toast.error(err.message || 'Booking confirmation failed');
