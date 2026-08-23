@@ -1,10 +1,10 @@
 # Healthcare Appointment & Follow-up Manager
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://healthcare-appointment-manager-btk6kodaq.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://healthcare-appointment-manager-blue.vercel.app/)
 [![Supabase](https://img.shields.io/badge/Supabase-Database%20%26%20Auth-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-🔗 **Live Production Deployment**: [https://healthcare-appointment-manager-btk6kodaq.vercel.app](https://healthcare-appointment-manager-btk6kodaq.vercel.app/)
+🔗 **Live Production Deployment**: [https://healthcare-appointment-manager-blue.vercel.app](https://healthcare-appointment-manager-blue.vercel.app/)
 
 A comprehensive, production-ready healthcare appointment management platform with AI-powered pre-visit/post-visit clinical summaries, automated email notifications, Google Calendar two-way synchronization, and background medication reminder queues.
 
@@ -34,11 +34,11 @@ A comprehensive, production-ready healthcare appointment management platform wit
 
 ## 📚 Documentation Deliverables
 
-Detailed technical specifications are located in the [`docs/`](file:///c:/Users/Windows/Documents/hospital%20booking/docs) directory:
-- 📖 [**System Design Document (800 words)**](file:///c:/Users/Windows/Documents/hospital%20booking/docs/system-design.md): In-depth architecture covering double-booking prevention, concurrency strategy, doctor leave conflict handling, slot hold mechanisms, and notification resilience.
-- 📡 [**API & RPC Documentation**](file:///c:/Users/Windows/Documents/hospital%20booking/docs/api.md): Specification of all PostgreSQL stored procedures, RPC functions, and client endpoints.
-- 🗄️ [**Database Schema & Security**](file:///c:/Users/Windows/Documents/hospital%20booking/docs/database.md): Entity relationship breakdown, partial indexes, and Row Level Security (RLS) policies.
-- 🤖 [**LLM Prompts & Gateway Guide**](file:///c:/Users/Windows/Documents/hospital%20booking/docs/llm-prompts.md): Centralized prompts, JSON output schemas, validation rules, and failure fallback behaviors.
+Detailed technical specifications are located in the [`docs/`](docs) directory:
+- 📖 [**System Design Document (800 words)**](docs/system-design.md): In-depth architecture covering double-booking prevention, concurrency strategy, doctor leave conflict handling, slot hold mechanisms, and notification resilience.
+- 📡 [**API & RPC Documentation**](docs/api.md): Specification of all PostgreSQL stored procedures, RPC functions, and client endpoints.
+- 🗄️ [**Database Schema & Security**](docs/database.md): Entity relationship breakdown, partial indexes, and Row Level Security (RLS) policies.
+- 🤖 [**LLM Prompts & Gateway Guide**](docs/llm-prompts.md): Centralized prompts, JSON output schemas, validation rules, and failure fallback behaviors.
 
 ---
 
@@ -107,13 +107,14 @@ To enable live Google Calendar synchronization:
 
 ## 🔑 Demo Login Credentials
 
-For development and evaluation, use these pre-seeded demo accounts (Password: `Demo@1234`):
+For testing and evaluation, use these pre-configured accounts:
 
 | Role | Email | Password | Access / Features |
 |---|---|---|---|
-| **Admin** | `admin@healthcare.demo` | `Demo@1234` | Manage doctor profiles, schedule leave, review conflict logs |
-| **Doctor** | `dr.sharma@healthcare.demo` | `Demo@1234` | View appointment roster, access consultation room, write notes & prescriptions |
-| **Patient** | `patient@healthcare.demo` | `Demo@1234` | Search clinicians, book appointments, log symptoms, view prescriptions & summaries |
+| **Quick Patient Demo** | `hi@gmail.com` | `123456` | Direct patient access to search clinicians, book appointments & view summaries |
+| **Patient** | `patient@healthcare.demo` | `Demo@1234` | Patient portal, symptom intake form, prescriptions & pre-visit AI insights |
+| **Doctor** | `dr.sharma@healthcare.demo` | `Demo@1234` | Doctor roster, consultation room, diagnosis notes & digital apothecary prescriptions |
+| **Admin** | `admin@healthcare.demo` | `Demo@1234` | Full administration, clinician management, leave scheduling & conflict resolution |
 
 ---
 
